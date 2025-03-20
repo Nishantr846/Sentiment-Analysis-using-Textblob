@@ -5,3 +5,4 @@ python-dotenv
 textblob
 plotly
 vaderSentiment
+transformers
