@@ -4,7 +4,7 @@ from textblob import TextBlob
 import time
 
 # Twitter API Credentials (Replace with actual credentials)
-BEARER_TOKEN = "YOUR_BEARER_TOKEN_HERE"
+BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAABgu0AEAAAAA6SlLndJFx7L%2BFpw1OwC6nUtGbKo%3DaTmON3kUykX6gPHOrMYltol3spQra7DxSHIbmd8c8KFqiqxSkh"
 
 # Initialize Tweepy Client (Twitter API v2)
 client = tweepy.Client(bearer_token=BEARER_TOKEN)
