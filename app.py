@@ -4,7 +4,7 @@ from textblob import TextBlob
 import time
 
 # Twitter API Credentials (Replace with actual credentials)
-BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAJYt0AEAAAAAhb4tSRgUfmAYzIw%2BdIdzqUc7wCE%3DNuxeGwCLPfrHzhfBKbxE0U7AbeJFtUli50cX9haXylh4IF8bvL"
+BEARER_TOKEN = "YOUR_BEARER_TOKEN_HERE"
 
 # Initialize Tweepy Client (Twitter API v2)
 client = tweepy.Client(bearer_token=BEARER_TOKEN)
@@ -40,12 +40,12 @@ def analyze_sentiment(text):
         return "Neutral", "😐"
 
 # Streamlit UI
-st.markdown("""
-    <h2 style="text-align: center;">🐦 X (formerly Twitter) Sentiment Analysis</h2>
-""", unsafe_allow_html=True)
+st.set_page_config(page_title="Twitter Sentiment Analysis", layout="wide")
+st.title("🐦 Twitter Sentiment Analysis")
+st.write("Analyze sentiment of tweets based on a keyword, hashtag, or copy-pasted tweet text.")
 
 # Layout Columns
-col1, spacer, col2 = st.columns([20, 10, 20])  # Increased spacing between columns
+col1, col2 = st.columns([1, 1])
 
 # **LEFT COLUMN: Search Tweets by Keyword**
 with col1:
@@ -87,7 +87,7 @@ with col1:
 
 # **RIGHT COLUMN: Analyze Single Tweet**
 with col2:
-    st.subheader("📝 Analyze a single Tweet Text")
+    st.subheader("📝 Analyze a Copied Tweet Text")
     tweet_text = st.text_area("Paste the tweet text here:")
 
     if st.button("Analyze Sentiment", key="text_button"):
