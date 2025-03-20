@@ -3,9 +3,3 @@ tweepy
 pandas
 python-dotenv
 textblob
-plotly
-vaderSentiment
-tensorflow==2.15.0
-keras==2.15.0
-transformers==4.38.2
-tf-keras<3.0.0
