@@ -59,7 +59,7 @@ col1, spacer, col2 = st.columns([20, 5, 20])  # Adjusted spacing
 with col1:
     st.subheader("🔍 Analyze Tweets by Keyword/Hashtag")
     query = st.text_input("Enter a keyword or hashtag (e.g., #AI, Tesla, Python):")
-    num_tweets = st.slider("Select number of tweets:", min_value=10, max_value=100, step=10, value=20)
+    num_tweets = st.slider("Select number of tweets:", min_value=10, max_value=100, step=2, value=20)
 
     if st.button("Analyze Sentiment", key="keyword_button"):
         if not query:
