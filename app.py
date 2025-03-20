@@ -85,9 +85,6 @@ with col1:
                             for tweet in tweets:
                                 st.write(f"- {tweet}")
 
-# **Add Vertical Space Between Sections**
-st.markdown("<br><br>", unsafe_allow_html=True)
-
 # **RIGHT COLUMN: Analyze Single Tweet**
 with col2:
     st.subheader("📝 Analyze a single Tweet Text")
