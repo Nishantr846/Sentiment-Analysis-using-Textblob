@@ -41,11 +41,11 @@ def analyze_sentiment(text):
 
 # Streamlit UI
 st.markdown("""
-    <h1 style="text-align: center;">🐦 Twitter Sentiment Analysis</h1>
+    <h2 style="text-align: center;">🐦 X (formerly Twitter) Sentiment Analysis</h2>
 """, unsafe_allow_html=True)
 
 # Layout Columns
-col1, col2 = st.columns([1, 1])
+col1, spacer, col2 = st.columns([20, 10, 20])  # Increased spacing between columns
 
 # **LEFT COLUMN: Search Tweets by Keyword**
 with col1:
@@ -87,7 +87,7 @@ with col1:
 
 # **RIGHT COLUMN: Analyze Single Tweet**
 with col2:
-    st.subheader("📝 Analyze a Copied Tweet Text")
+    st.subheader("📝 Analyze a single Tweet Text")
     tweet_text = st.text_area("Paste the tweet text here:")
 
     if st.button("Analyze Sentiment", key="text_button"):
