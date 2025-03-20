@@ -1,70 +1,75 @@
-Twitter Sentiment Analysis
+# Twitter Sentiment Analysis
 
-Overview
+## Overview
 
-This project is a web application built using Streamlit that performs sentiment analysis on live tweets fetched from Twitter. The sentiment of tweets is analyzed using TextBlob, categorizing them as Positive, Neutral, or Negative.
+A Machine Learning-based web application that analyzes sentiments of live tweets fetched from Twitter. The sentiment of tweets is categorized as Positive, Neutral, or Negative using TextBlob.
 
-Features
+### Features
 
-Fetches live tweets based on user input (keyword or hashtag)
+- Fetches live tweets based on user input (keyword or hashtag)
 
-Analyzes sentiment of fetched tweets
+- Analyzes sentiment of fetched tweets in real-time
 
-Allows users to manually input a tweet for sentiment analysis
+- Allows users to manually input a tweet for sentiment analysis
 
-Displays sentiment summary and categorized tweets
+- Displays sentiment summary and categorized tweets
 
-Implements caching to minimize redundant API calls
+- Implements caching to minimize redundant API calls
 
-Technologies Used
+## Installation
 
-Python: Core programming language
+### Prerequisites
 
-Streamlit: Web framework for creating interactive UI
+- Ensure you have Python installed (version 3.7 or later). Then, install dependencies using: requirements.txt
 
-Tweepy: Python wrapper for Twitter API v2
+### How to Run
 
-TextBlob: Sentiment analysis library
+- Clone this repository to your local machine:
 
-Installation
+- Run the Streamlit app: streamlit run app.py (https://sentiment-analysis-minor-project-kiit.streamlit.app/)
 
-Prerequisites
+- This will start a local server and open the application in your browser.
 
-Ensure you have Python installed (version 3.7 or later). Install dependencies using:
+### How It Works
 
-Usage
+- The user enters a keyword or hashtag to fetch tweets.
 
-1. Obtain Twitter API Credentials
+- The system retrieves the latest tweets using the Twitter API.
 
-Replace the BEARER_TOKEN variable in the script with your own Twitter API credentials.
+- Sentiment analysis is performed using TextBlob.
 
-2. Run the Application
+- The application displays sentiment summaries and categorized tweets.
 
-Execute the following command in the terminal:
+- Users can also paste a tweet manually for analysis.
 
-This will start the Streamlit application, which can be accessed in a browser.
+## Error Handling
 
-3. Analyze Tweets
+- Displays an error message if the Twitter API rate limit is exceeded.
 
-Enter a keyword/hashtag and select the number of tweets to fetch.
+- Handles exceptions and alerts the user if tweets cannot be retrieved.
 
-Click Analyze Sentiment to fetch and analyze the tweets.
+## Technologies Used
 
-View sentiment summary and categorized tweets.
+- **Python** - Core programming language
 
-Alternatively, paste a tweet text for sentiment analysis.
+- **Streamlit** - Web framework for creating an interactive UI
 
-Error Handling
+- **Tweepy** - Python wrapper for Twitter API v2
 
-Displays an error message if the Twitter API rate limit is exceeded.
+- **TextBlob** - Sentiment analysis library
 
-Handles exceptions and alerts the user if tweets cannot be retrieved.
-
-License
+# License
 
 This project is open-source and available under the MIT License.
 
-Author
+### Contact : 
+- Nishant Kumar
+- nishantr846@gmail.com
+- https://www.linkedin.com/in/nishantr846/
 
-Nishant
+Nishant Kumar
+
+Email
+
+LinkedIn
 
