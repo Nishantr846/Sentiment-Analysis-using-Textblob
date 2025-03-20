@@ -40,10 +40,9 @@ def analyze_sentiment(text):
         return "Neutral", "😐"
 
 # Streamlit UI
-st.set_page_config(page_title="Twitter Sentiment Analysis", layout="wide")
-st.title("🐦 Twitter Sentiment Analysis")
-st.write("Analyze sentiment of tweets based on a keyword, hashtag, or copy-pasted tweet text.")
-
+st.markdown("""
+    <h1 style="text-align: center; margin-bottom: 50px;">🐦 Twitter Sentiment Analysis</h1>
+""", unsafe_allow_html=True)
 # Layout Columns
 col1, col2 = st.columns([1, 1])
 
