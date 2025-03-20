@@ -67,9 +67,3 @@ This project is open-source and available under the MIT License.
 - nishantr846@gmail.com
 - https://www.linkedin.com/in/nishantr846/
 
-Nishant Kumar
-
-Email
-
-LinkedIn
-
