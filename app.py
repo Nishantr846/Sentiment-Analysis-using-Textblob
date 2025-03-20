@@ -45,7 +45,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Layout Columns
-col1, spacer, col2 = st.columns([20, 10, 20])  # Increased spacing between columns
+# col1, spacer, col2 = st.columns([20, 10, 20])  # Increased spacing between columns
 
 # **LEFT COLUMN: Search Tweets by Keyword**
 with col1:
