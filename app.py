@@ -1,7 +1,8 @@
 import streamlit as st
 import tweepy
-from textblob import TextBlob
 import time
+import plotly.express as px
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 # Twitter API Credentials (Replace with actual credentials)
 BEARER_TOKEN = "AAAAAAAAAAAAAAAAAAAAAJYt0AEAAAAAhb4tSRgUfmAYzIw%2BdIdzqUc7wCE%3DNuxeGwCLPfrHzhfBKbxE0U7AbeJFtUli50cX9haXylh4IF8bvL"
@@ -11,6 +12,9 @@ client = tweepy.Client(bearer_token=BEARER_TOKEN)
 
 # Cache dictionary to store recent query results
 cache = {}
+
+# Initialize Sentiment Analyzer (VADER)
+analyzer = SentimentIntensityAnalyzer()
 
 def fetch_tweets(query, num_tweets):
     """Fetches recent tweets based on query, with caching to minimize API calls."""
@@ -30,30 +34,25 @@ def fetch_tweets(query, num_tweets):
         return [f"Error: {str(e)}"]
 
 def analyze_sentiment(text):
-    """Analyzes sentiment of a given text using TextBlob."""
-    polarity = TextBlob(text).sentiment.polarity
-    if polarity > 0:
+    """Analyzes sentiment of a given text using VADER."""
+    scores = analyzer.polarity_scores(text)
+    compound = scores['compound']
+
+    if compound >= 0.05:
         return "Positive", "😊"
-    elif polarity < 0:
+    elif compound <= -0.05:
         return "Negative", "😠"
     else:
         return "Neutral", "😐"
 
 # Streamlit UI
+st.set_page_config(page_title="Twitter Sentiment Analysis", layout="wide")
+
 st.title("🐦 Twitter Sentiment Analysis")
 st.write("Analyze sentiment of tweets based on a keyword, hashtag, or copy-pasted tweet text.")
 
 # **LEFT COLUMN: Keyword/Hashtag Search**
-st.markdown(
-    """
-    <style>
-        .stColumns { gap: 50px; }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-col1, spacer, col2 = st.columns([20, 5, 20])  # Adjusted spacing
+col1, col2 = st.columns([1, 1])  # Balanced column layout
 
 # **LEFT COLUMN: Search Tweets by Keyword**
 with col1:
@@ -81,20 +80,29 @@ with col1:
                     sentiment_counts[sentiment] += 1
                     categorized_tweets[sentiment].append(tweet)
 
+                # **Pie Chart Visualization**
                 st.write("### Sentiment Analysis Summary")
+                fig = px.pie(
+                    names=list(sentiment_counts.keys()),
+                    values=list(sentiment_counts.values()),
+                    title="Sentiment Distribution",
+                    color=list(sentiment_counts.keys()),
+                    color_discrete_map={"Positive": "green", "Neutral": "gray", "Negative": "red"},
+                )
+                st.plotly_chart(fig, use_container_width=True)
+
+                # **Show Sentiment Counts**
                 st.success(f"**Positive Tweets:** {sentiment_counts['Positive']}")
                 st.warning(f"**Neutral Tweets:** {sentiment_counts['Neutral']}")
                 st.error(f"**Negative Tweets:** {sentiment_counts['Negative']}")
 
+                # **Display Tweets Categorized by Sentiment**
                 with st.expander("📢 **View Tweets by Sentiment**"):
                     for category, tweets in categorized_tweets.items():
                         if tweets:
                             st.subheader(f"{category} Tweets:")
                             for tweet in tweets:
                                 st.write(f"- {tweet}")
-
-# **Add Vertical Space Between Sections**
-st.markdown("<br><br>", unsafe_allow_html=True)
 
 # **RIGHT COLUMN: Analyze Single Tweet**
 with col2:
@@ -109,3 +117,9 @@ with col2:
             st.write("### Tweet Content:")
             st.info(tweet_text)
             st.write(f"### Sentiment Analysis: **{sentiment} {emoji}**")
+            if sentiment == "Positive":
+                st.success("This tweet expresses a **positive sentiment**. 😊")
+            elif sentiment == "Negative":
+                st.error("This tweet expresses a **negative sentiment**. 😠")
+            else:
+                st.warning("This tweet expresses a **neutral sentiment**. 😐")
