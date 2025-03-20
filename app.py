@@ -39,7 +39,7 @@ def analyze_sentiment(text):
         return "Neutral", "😐"
 
 # Streamlit UI
-st.set_page_config(page_title="Twitter Sentiment Analysis", layout="wide")
+st.set_page_config(page_title="Twitter Sentiment Analysis", layout="centre")
 st.title("🐦 Twitter Sentiment Analysis")
 st.write("Analyze sentiment of tweets based on a keyword, hashtag, or copy-pasted tweet text.")
 
