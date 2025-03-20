@@ -3,3 +3,4 @@ tweepy
 pandas
 python-dotenv
 textblob
+plotly
