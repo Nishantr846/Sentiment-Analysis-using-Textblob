@@ -43,7 +43,6 @@ def analyze_sentiment(text):
 st.markdown("""
     <h1 style="text-align: center;">🐦 Twitter Sentiment Analysis</h1>
 """, unsafe_allow_html=True)
-st.write("Analyze sentiment of tweets based on a keyword, hashtag, or copy-pasted tweet text.")
 
 # Layout Columns
 col1, col2 = st.columns([1, 1])
